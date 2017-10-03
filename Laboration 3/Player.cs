@@ -15,6 +15,8 @@ namespace Laboration_3
         private string Status { get; set; }
         public Wallet PlayerWallet = new Wallet();
         public Player() { }
+        public Player(int age)
+        { Age = age; }
         public Player(string name, string country, int age)
         {
             Name = name;
