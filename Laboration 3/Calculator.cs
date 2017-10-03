@@ -12,6 +12,7 @@ namespace Laboration_3
         {
            double result = money* multiply;
             return result;
+            Console.WriteLine();
         }
     }
 }
