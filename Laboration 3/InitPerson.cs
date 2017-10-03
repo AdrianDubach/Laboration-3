@@ -15,7 +15,7 @@ namespace Laboration_3
 
         public static Player NewPlayer()
         {
-            Player BadAge = new Player(playerAge);
+            Player BadAge = new Player(1);
             Console.WriteLine("Welcome to Super-Syntax-Casino-Royale-SpinEveryDay-give-us-all-your-money-Casino!");
             Console.Write("Please enter age: ");
             do

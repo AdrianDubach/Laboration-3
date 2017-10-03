@@ -11,7 +11,6 @@ namespace Laboration_3
         private static string input;
         private static double playerBet;
         private static double winnings;
-        //private static double cashStatus;
 
 
         public static string Spin()
@@ -27,44 +26,26 @@ namespace Laboration_3
                 Console.WriteLine("How much money do you want to play with " + p.Name + "?");
                 while (p.PlayerWallet.CashCheck() <= 0)
                 {
-                    double.TryParse(Console.ReadLine(), out double playerCurrency);
-                    p.AddCash(playerCurrency);
+                    double.TryParse(Console.ReadLine(), out double startUpCash);
+                    p.AddCash(startUpCash);
                 }
-
+                Console.Clear();
                 Console.WriteLine("Good luck " + p.Name + "! You have " + p.PlayerWallet.CashCheck() + " money in your wallet!");
-                //cashStatus = p.PlayerWallet.CashCheck();
-                while (p.PlayerWallet.CashCheck() >= 10)
+
+                while (p.PlayerWallet.CashCheck() > 0)
                 {
 
-                    Console.WriteLine("Do you want to spin, " + p.Name + "? Y/N");
+                    Console.WriteLine("Do you want to spin, " + p.Name + "? Yes/No");
                     do input = Console.ReadLine().ToUpper();
-                    while ((input == "Y" || input == "N") == false);
-                    if (input == "Y")
+                    while ((input =="Y" || input == "YES" ||input == "N" ||input == "NO") == false);
+                    if (input == "Y" || input == "YES")
                     {
-                        Console.Write("Place a bet: 10, 20, 50, 100 ");
+                        Console.Clear();
+                        Console.WriteLine("Balance: " + p.PlayerWallet.CashCheck());
+                        Console.Write("Place a bet:");
                         do input = Console.ReadLine();
-                        while ((input == "10" || input == "20" || input == "50" || input == "100") == false);
-                        if (input == "10")
-                        {
-                            playerBet = 10;
-                            Console.WriteLine("You bet 10!");
-                        }
-                        if (input == "20")
-                        {
-                            playerBet = 20;
-                            Console.WriteLine("You bet 20!");
-                        }
-                        if (input == "50")
-                        {
-                            playerBet = 50;
-                            Console.WriteLine("You bet 50!");
-                        }
-                        if (input == "100")
-                        {
-                            playerBet = 100;
-                            Console.WriteLine("You bet 100!");
-                        }
-
+                        while (!double.TryParse(input, out ref double i));
+                        playerBet = double.Parse(input);
                         if (playerBet <= p.PlayerWallet.CashCheck())
                         {
                             p.WithdrawCash(playerBet);
@@ -79,13 +60,14 @@ namespace Laboration_3
 
                         Console.WriteLine("you have " + p.PlayerWallet.CashCheck() + " money left!");
                     }
-                    if (input == "N")
+                    if (input == "N" || input == "NO")
                     {
+                        Console.Clear();
                         Console.WriteLine("Thank you for playing, " + p.Name + "!");
                         return ("You walk away with " + p.PlayerWallet.CashCheck() + " money!");
                     }
                 }
-                return ("You walk away with " + p.PlayerWallet.CashCheck() + " money! FeelsBadMan");
+                return ("You walk away a broken man, " + p.PlayerWallet.CashCheck() + " money to your name! FeelsBadMan.");
             }
         }
         }

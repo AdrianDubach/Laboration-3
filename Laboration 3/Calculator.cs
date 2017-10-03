@@ -10,8 +10,8 @@ namespace Laboration_3
     {
         public static double CashCalculator(double money, double multiply)
         {
-           double result = money* multiply;
-            return result;
+
+            return  money * multiply;
         }
     }
 }
