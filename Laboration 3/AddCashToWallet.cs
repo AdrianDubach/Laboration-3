@@ -18,7 +18,7 @@ namespace Laboration_3
                 
             }
             Console.Clear();
-            Console.WriteLine("Good luck " + p.Name + "! You have " + p.PlayerWallet.CashCheck() + " money in your wallet!");
+            Console.WriteLine("Good luck " + p.Name + "! You have added" + p.PlayerWallet.CashCheck() + " money to your wallet!");
             return p.PlayerWallet.CashCheck();
         } 
     }
