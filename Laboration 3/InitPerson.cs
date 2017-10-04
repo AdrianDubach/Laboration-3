@@ -12,18 +12,27 @@ namespace Laboration_3
         private static string ageParse;
         private static string country;
         private static string name;
+        
 
         public static Player NewPlayer()
         {
-            Player BadAge = new Player(1);
-            Console.WriteLine("Welcome to Super-Syntax-Casino-Royale-SpinEveryDay-give-us-all-your-money-Casino!");
+            Player BadAge;
+        Console.WriteLine("Welcome to Super-Syntax-Casino-Royale-SpinEveryDay-give-us-all-your-money-Casino!");
             Console.Write("Please enter age: ");
             do
                 ageParse = Console.ReadLine();
             while (int.TryParse(ageParse, out int i) == false);
             playerAge = int.Parse(ageParse);
             if (playerAge < 18)
+            {
+                BadAge = new Player(playerAge);
                 return BadAge;
+            }
+            if (playerAge > 70)
+            {
+                BadAge = new Player(playerAge);
+                return BadAge;
+            }
             Console.WriteLine("age: " + playerAge);
             Console.Write("What is your name? ");
             name = Console.ReadLine();
