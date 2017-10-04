@@ -13,24 +13,11 @@ namespace Laboration_3
         private static double winnings;
 
 
-        public static string Spin()
+        public static string Spin(Player p)
         {
+            if (p.PlayerWallet.CashCheck() <= 0)
+                AddCashToWallet.AddCashToPlayWith(p);
 
-            Player p = InitPlayer.NewPlayer();
-            if (p.Age < 18)
-            {
-                return ("You're too young!");
-            }
-            else
-            {
-                Console.WriteLine("How much money do you want to play with " + p.Name + "?");
-                while (p.PlayerWallet.CashCheck() <= 0)
-                {
-                    double.TryParse(Console.ReadLine(), out double startUpCash);
-                    p.AddCash(startUpCash);
-                }
-                Console.Clear();
-                Console.WriteLine("Good luck " + p.Name + "! You have " + p.PlayerWallet.CashCheck() + " money in your wallet!");
 
                 while (p.PlayerWallet.CashCheck() > 0)
                 {
@@ -66,9 +53,13 @@ namespace Laboration_3
                         Console.WriteLine("Thank you for playing, " + p.Name + "!");
                         return ("You walk away with " + p.PlayerWallet.CashCheck() + " money!");
                     }
-                }
-                return ("You walk away a broken man, " + p.PlayerWallet.CashCheck() + " money to your name! FeelsBadMan.");
+                    if (p.PlayerWallet.CashCheck() <= 0)
+
+                    Console.WriteLine("Oh no " + p.Name + "! You lost all your money. Do you wish to insert more?");
             }
+
+                return ("You walk away a broken man, " + p.PlayerWallet.CashCheck() + " money to your name! FeelsBadMan.");
+            
         }
         }
     }

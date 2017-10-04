@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCashToWallet.cs" />
     <Compile Include="ArrayWinResult.cs" />
     <Compile Include="Calculator.cs" />
     <Compile Include="GameBoardcs.cs" />

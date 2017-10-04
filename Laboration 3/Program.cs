@@ -11,9 +11,13 @@ namespace Laboration_3
         private static string moneyLeft;
             static void Main(string[] args)
         {
-
-
-            moneyLeft = Spinner.Spin();
+            Player p = InitPlayer.NewPlayer();
+            if (p.Age < 18)
+            {
+                Console.WriteLine("You're too young!");
+            }
+            else
+            moneyLeft = Spinner.Spin(p);
             Console.WriteLine(moneyLeft);
             Console.Read();
         }
