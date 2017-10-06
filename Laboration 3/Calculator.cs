@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Laboration_3
-{
+{//Klassen är förälder till ArrayWinResult Klassen
     class Calculator
     {
-        public static double CashCalculator(double money, double multiply)
+        //metoden tar emot två double värden i form av money och multiply.
+        protected double CashCalculator(double playerBet, double multiplyValue)
         {
-           
-            return  money * multiply;
+           //returnerar money* multiply.
+            return  playerBet * multiplyValue;
         }
     }
 }

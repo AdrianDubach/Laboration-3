@@ -5,22 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Laboration_3
-{
-    class RandomToIdentity
+{ //Denna klass är förälder till GameBoard Klassen.
+    class SetGameBoardIdentity
     {
-        static int picker;
-        static string result;
-        static Random rnd = new Random();
-        public RandomToIdentity()
+       
+         private int picker;
+         private string result;
+         private Random rnd;
+
+        protected SetGameBoardIdentity()
         {
+            rnd = new Random();
             picker = 0;
             result = null;
         }
-
-        public static string BlockPicker()
+        // denna metod använder sig av en random variabel som avgör vilken string som returneras.
+        protected string SetBlockValue()
         {
+            //picker variabeln tilldelas ett random värdet från 1 till 100.
             picker = rnd.Next(1, 101);
-
+            /*nedanför följer en rad if satser som väljs beroende på vilket värde picker variabeln givits. 
+             När korrekt if sats valts ges result variabeln ett string värde som därefter returneras*/
             if (picker > 0 && picker < 3)
                 result = "D";
             if (picker > 2 && picker < 11)

@@ -62,11 +62,11 @@
     <Compile Include="ArrayWinResult.cs" />
     <Compile Include="Calculator.cs" />
     <Compile Include="GameBoardcs.cs" />
-    <Compile Include="InitPerson.cs" />
+    <Compile Include="InitPlayer.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomToIdentity.cs" />
+    <Compile Include="SetGameBoardIdentity.cs" />
     <Compile Include="Spinner.cs" />
     <Compile Include="Wallet.cs" />
   </ItemGroup>
