@@ -20,7 +20,7 @@ namespace Laboration_3
             result = null;
         }
         // denna metod använder sig av en random variabel som avgör vilken string som returneras.
-        protected string SetBlockValue()
+        protected string SetArrayPosValue()
         {
             //picker variabeln tilldelas ett random värdet från 1 till 100.
             picker = rnd.Next(1, 101);

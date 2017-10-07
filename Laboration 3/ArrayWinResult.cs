@@ -22,7 +22,7 @@ namespace Laboration_3
             // Kollar om översta raden har lika string värden.
             if (SpelKonsol[0, 0] == SpelKonsol[0, 1] && SpelKonsol[0, 0] == SpelKonsol[0, 2])
             { /*Dessa if satser kollar, om raden har ett värde, vilken string som är på första platsen.  
-                Variabeln returnValue utökas i så fall med ett som tilldelas beroende på vilken string som finns på första array platsen.
+                Variabeln returnValue utökas i så fall med ett värde som tilldelas beroende på vilken string som finns på första array platsen.
                 Denna funktion är densamma i alla följande radvinst-funktioner.*/
                 if (SpelKonsol[0, 0] == "9")
                     multiplyValue += 2;

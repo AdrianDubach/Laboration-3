@@ -5,17 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Laboration_3
-{
+{// Spinner ärver funktioner från GameBoard.
     class Spinner : GameBoard
     {// dessa tre värden används enbart för statistiska syften
         private double moneyDeposited;
         private double moneyLost;
         private double moneyWon;
-        //dessa tre värde används mer funktionellt i koden.
+        //dessa tre värden används mer funktionellt i koden.
         private string input;
         private double playerBet;
         private double winnings;
-
+        //Arrayen och random variabeln används när man ej vunnit på en spin. 
+        String[] loss = new String[5] { ", tough luck!", ", unlucky!", ", darn it!", ", next one's the charm!", ", it happens!" };
+        Random rnd = new Random();
 
         public string Spin(Player p)
         {/*Denna funktion kollar till en början att Wallet klassen inte har ett positivt _balance värde. 
@@ -68,8 +70,9 @@ namespace Laboration_3
                             moneyWon = moneyWon + winnings;
                         }
                         else
+                            
                             //om winnings inte har ett positivt värde skrivs detta meddelande ut.
-                            Console.WriteLine("No winning row");
+                            Console.WriteLine("No winning row" + loss[rnd.Next(0,5)]);
                     }
                     /*Om det satsade värdet överstiger spelarens tillgängliga tillgångar skrivs det ut två meddelanden samt ett alternativ att lägga till mer pengar i plånboken. 
                      * Ett som meddelar att värdet är för högt gentemot spelarens tillgångar,
@@ -81,34 +84,36 @@ namespace Laboration_3
 
                         Console.WriteLine("You have " + p.PlayerWallet.CashCheck() + " money left!");
                         Console.WriteLine("Do you want to add more money to your wallet? Y/N");
-                        input = Console.ReadLine().ToUpper();
-                        while (input == "Y" || input == "YES" || input == "NO" ||input =="N")
-                            if (input == "Y" || input == "YES")
+                        do input = Console.ReadLine().ToUpper();
+                        while (!(input == "Y" || input == "YES" || input == "NO" || input == "N"));
+
+                        if (input == "Y" || input == "YES")
                             moneyDeposited = moneyDeposited + AddCashToWallet.AddCashToPlayWith(p);
                         if (input == "NO" || input == "N")
-                            Console.WriteLine();
-                    }
+                            input = null;
 
+                    }
                 }
                 //om N eller No valts vid valkontrollen så körs nedanstående if funktion.
                 if (input == "N" || input == "NO")
                 {
                     Console.Clear();
-                    //Här skrivs en rad ut som tackar spelaren för att hen har spelat.
-                    if (moneyWon == moneyLost)
+                    
+                    //Om spelaren inte kört en enda spin.
+                    if (moneyLost == 0)
                         return "Well, that was pointless.";
                     else
                     {
+                        //Här skrivs en rad ut som tackar spelaren för att hen har spelat.
                         Console.WriteLine("Thank you for playing, " + p.Name + "!");
                         /*Här jämförs moneyLost mot moneyWon variablerna. Beroende på vilken som är högst returneras specifika string värden. 
                          I stringarna sätts alla statistiska värden in, så spelaren får överseende över hur mycket som spelats för och hur mycket som vunnits/förlorats.
                          Använder mig av funktionen System.Environment.NewLine för att skapa nya rader i den returnerade stringen*/
-                        if (moneyLost > moneyWon) // om förlust.
-                            return string.Format("You spent: {0:N2}{1:N2}{2:N2}", moneyDeposited + " You Lost: ", moneyLost + " You won: ", moneyWon + "."+ System.Environment.NewLine +"Better luck next time, " + p.Name + ".");
+                        if (moneyLost >= moneyWon) // om förlust.
+                            return string.Format("You spent: {0:N2}{1:N2}{2:N2}", moneyDeposited + " You Lost: ", moneyLost + " You won: ", moneyWon + "." + System.Environment.NewLine + "Better luck next time, " + p.Name + ".");
                         if (moneyWon > moneyLost) // om vinst.
-                            return string.Format("You spent: {0:N2}{1:N2}{2:N2}", moneyDeposited + " You Lost: ", moneyLost + " You won: ", moneyWon + "." +  System.Environment.NewLine +"Good run, " + p.Name + ". " + p.Country + " will celebrate your victory, to be sure!");
+                            return string.Format("You spent: {0:N2}{1:N2}{2:N2}", moneyDeposited + " You Lost: ", moneyLost + " You won: ", moneyWon + "." + System.Environment.NewLine + "Good run, " + p.Name + ". " + p.Country + " will celebrate your victory, to be sure!");
                     }
-
                 }
                 //om spelarens pengar tagit slut ges spelaren ett val att sätta in mer pengar eller avsluta sin spelrunda.
                 if (p.PlayerWallet.CashCheck() <= 0)
@@ -124,6 +129,9 @@ namespace Laboration_3
                 }
             }
             //Om spelaren väljer Q/Quit returneras denna string.
+            //Om spelaren inte kört en enda spin.
+            if (moneyLost == 0)
+                return "Well, that was pointless.";
             return ("You chose to quit. You spent: " + moneyDeposited + " You Lost: " + moneyLost + " You won: " + moneyWon);
 
 

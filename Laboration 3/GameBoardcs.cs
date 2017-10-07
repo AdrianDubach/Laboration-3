@@ -32,8 +32,8 @@ namespace Laboration_3
                 {/*För varje gång denna loop körs så används SetBlockValue metoden under SetGameBoardIdentity klassen som GameBoard ärvt.
                     Det metoden gör är att den returnerar en string som sätts in i den plats i arrayen som loopen körs igenom
                     Enkelt förklarat: För varje i loop körs j loopen 3 gånger. Varje gång j loopen körs tilldelas platsen [i, j] i arrayen den returnerade stringen
-                    Så om i körts en gång och j två gånger så ser array placeringern ut som sådan[0, 1]*/
-                    SpelKonsol[i, j] = SetBlockValue();
+                    Så om i körts en gång och j två gånger så ser array placeringen ut som sådan[0, 1]*/
+                    SpelKonsol[i, j] = SetArrayPosValue();
                     //Denna skriver ut värdena som tilldelas arrayen på en rad i konsollen.
                     Console.Write("\t{0}\t", SpelKonsol[i, j]);
 

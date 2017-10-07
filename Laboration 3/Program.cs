@@ -11,7 +11,9 @@ namespace Laboration_3
          Noter: Jag har på eget initiativ använt mig av ärvda klasser i koden. Detta då jag råkade läsa lite om det och tyckte det verkade smidigare gentemot att
          generera nya objekt för varje klass. Resultatet blev en, enligt mig, säkrare kod där klasserna har mindre yttre tillgång samt ett halverande av objekt skapande osv.
          Använder tillgänglighetsnivån 'protected' på föräldraklasserna vilket innebär
-         att dess funktioner endast kan fås tillgång via samma klass samt klasser som ärver klassens funktioner*/
+         att dess funktioner endast kan fås tillgång till via samma klass samt klasser som ärver klassens funktioner*/
+
+        //Program ärver funktioner från InitPlayer klassen.
     class Program : InitPlayer
     {
         private static string moneyStats;

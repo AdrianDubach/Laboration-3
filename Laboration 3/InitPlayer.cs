@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Laboration_3
-{
+{//InitPlayer är en hjälpklass som skapar playerobjekt med tillgivna attribut.
     class InitPlayer
     {//lokala variabler.
         private static int playerAge;
